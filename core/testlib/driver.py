@@ -37,5 +37,4 @@ class Driver:
             }
 
     def start(self) -> WebDriver:
-        driver = browsers[BROWSER](**self.kwargs)
-        return driver
+        return browsers[BROWSER](**self.kwargs)
