@@ -10,7 +10,8 @@ from steps.ui_steps.main_page_steps import main_page_steps, main_page_assert_ste
 @pytest.mark.parametrize('country', [
     'Ukraine',
     'USA',
-    'Germany'
+    'Germany',
+    'Great Britain'
 ])
 @pytest.mark.usefixtures('driver')
 def test_ask_country(country):

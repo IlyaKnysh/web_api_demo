@@ -1,8 +1,11 @@
 import allure
+from hamcrest import contains_string
 from selene import by
 from selene.support.shared import browser
 
+from core.apps.entities.entities import CONNECTED_LOG_STRING
 from core.apps.frontend.pages.base_page import BasePage
+from core.testlib.matchers import check_that
 
 
 class MainPage(BasePage):
@@ -20,6 +23,10 @@ class MainPage(BasePage):
     ask_country_button = browser.element(by.xpath('//input[@value="Ask country"]'))
     ask_capital_button = browser.element(by.xpath('//input[@value="Ask capital"]'))
     logs = browser.element(by.id('log'))
+
+    def navigate(self):
+        super().navigate()
+        check_that(self.get_actions_log_text, contains_string(CONNECTED_LOG_STRING), f'Main page is opened')
 
     @allure.step('Fill country input')
     def fill_country_input(self, text: str):

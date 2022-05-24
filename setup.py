@@ -12,7 +12,8 @@ INSTALL_REQUIRES = [
     'mariadb',
     'Faker',
     'jsonschema',
-    'addict'
+    'addict',
+    'pytest-xdist'
 ]
 setup(
     name=PACKAGE_NAME,

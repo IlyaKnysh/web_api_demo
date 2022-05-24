@@ -15,8 +15,9 @@ TEST_REPORTS_DIR = os.environ.get("TEST_REPORTS_DIR", os.path.join(PROJECT_DIREC
 SCREEN_PATH = os.path.join(TEST_REPORTS_DIR,
                            "screen_{}.png".format(str(_selene_config.counter)).replace('count(', '').replace(')', ''))
 
-URL = get('URL', 'http://localhost:5000')
-BROWSER = get('BROWSER', 'chrome')
+URL = get('URL', 'http://localhost:5000')  # in case of remote run on Selenide should use external IP
+BROWSER = get('BROWSER', 'remote')
+REMOTE_IP = get('REMOTE_IP', 'localhost')
 
 
 class DbCredentials:

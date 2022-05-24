@@ -6,6 +6,8 @@ In this module you should store all system entites, like:
 - etc
 """
 
+CONNECTED_LOG_STRING = 'Received: connect_response {"data":"Connected","count":0}'
+
 
 class WsEvents:
     SOME_SERVER_PUSH_EVENT = 'some_server_push_event'

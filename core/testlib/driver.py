@@ -4,7 +4,7 @@ from selenium import webdriver
 from selenium.webdriver.remote.webdriver import WebDriver
 from webdriver_manager.chrome import ChromeDriverManager
 
-from config.env import BROWSER
+from config.env import BROWSER, REMOTE_IP
 
 browsers = {
     'chrome': webdriver.Chrome,
@@ -26,6 +26,15 @@ class Driver:
             options.add_argument("--start-maximized")
             # options.add_argument("--headless")  # Add this option to run in headless node
             self.kwargs['options'] = options
+        if BROWSER == 'remote':
+            self.kwargs['command_executor'] = f'http://{REMOTE_IP}:4444/wd/hub'
+            self.kwargs['desired_capabilities'] = {
+                "browserName": "chrome",
+                "selenoid:options": {
+                    "enableVNC": True,
+                    "enableVideo": False
+                }
+            }
 
     def start(self) -> WebDriver:
         driver = browsers[BROWSER](**self.kwargs)
